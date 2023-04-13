@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FizzBuzz</title>
+  <style>
+    body {
+      font-family: monospace;
+      font-size: 16px;
+    }
+    form{
+        border: 2px dotted black;
+        width: 500px;
+        
+    }
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+    textarea {
+      width: 159px;
+      height: 150px;
+    }
+  </style>
+</head>
+<body>
+  <h1>FizzBuzz</h1>
+  <form>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name">
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email">
+    <label for="phone-number">Phone Number:</label>
+    <input type="tel" id="phone-number" name="phone-number"> <br>
+    <label for="output">Output:</label>
+    <textarea id="output" readonly></textarea>
+    <button type="button" onclick="runFizzBuzz()">Submit</button>
+  </form>
+  <script>
+    function fizzBuzz() {
+            event.preventDefault(); // prevent form submission
+            const phoneNumber = document.getElementById("phone-number").value;
+            var sum = calculateSum(phoneNumber);
+            var output = "";
+            for (var i = 1; i <= sum; i++) {
+                if (i % 4 === 0 && i % 5 === 0) {
+                    output += "FizzBuzz ";
+                } else if (i % 4 === 0) {
+                    output += "Fizz ";
+                } else if (i % 5 === 0) {
+                    output += "Buzz ";
+                } else {
+                    output += i + " ";
+                }
+            }
+            // document.getElementById("output").textContent = output.trim();
+            console.log(output);
+        }
+        function calculateSum(phoneNumber) {
+            var sum = 0;
+            for (var i = 0; i < phoneNumber.length; i++) {
+                if (!isNaN(phoneNumber[i])) { // check if character is a digit
+                    sum += parseInt(phoneNumber[i]);
+                }
+            }
+            return sum;
+        }
+  </script>
+</body>
+</html>
